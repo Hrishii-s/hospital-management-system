@@ -1,0 +1,108 @@
+.navbar {
+    background: linear-gradient(135deg, #0077b6, #00b4d8);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 0.8rem 1rem;
+  }
+  
+  .navbar-brand {
+    font-weight: 700;
+    color: #ecf0f1 !important;
+    font-size: 1.4rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .navbar-brand sup {
+    background-color: #f95e5e;
+    color: white;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    position: relative;
+    top: -10px;
+  }
+  
+  .nav-link {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-link:hover,
+  .nav-link:focus {
+    color: white !important;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .nav-link.active {
+    color: white !important;
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+  
+  .dropdown-menu {
+    border: none;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 10px;
+  }
+  
+  .dropdown-item {
+    padding: 0.6rem 1.2rem;
+    transition: all 0.2s ease;
+    
+    
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #3498db;
+  }
+  
+  .search-form .form-control {
+    border-radius: 20px 0 0 20px;
+    border: none;
+    padding-left: 16px;
+  }
+  
+  .search-form .btn {
+    border-radius: 0 20px 20px 0;
+    height:45px;
+    background-color: #2ecc71;
+    border: none;
+    transition: all 0.3s ease;
+  }
+  
+  .search-form .btn:hover {
+    background-color: #27ae60;
+  }
+  
+  .login-btn {
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    color: white !important;
+    border-radius: 20px;
+    padding: 0.4rem 1rem !important;
+    margin-left: 15px;
+    transition: all 0.3s ease;
+  }
+  
+  .login-btn:hover {
+    background-color: white;
+    color: #3498db !important;
+  }
+  
+  @media (max-width: 992px) {
+    .login-btn {
+      margin: 10px 0;
+      padding: 0.4rem 1rem !important;
+      display: inline-block;
+      text-align: center;
+    }
+  
+    .search-form {
+      margin: 10px 0;
+    }
+  }
+  

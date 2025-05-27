@@ -1,0 +1,54 @@
+{% include 'partials/nav.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'adminLogin.css' %}">
+    
+
+</head>
+<body style="background-color: rgba(55, 161, 97, 0.1);">
+    <div class="container">
+        <div class="login-container">
+            <div class="login-header">
+                <h2>Admin Login</h2>
+                <p class="text-muted">Please enter your credentials</p>
+            </div>
+            
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                            {% if form.errors %}
+            <div class="alert alert-danger">
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" name="email" placeholder="Enter your email">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" placeholder="Enter your password">
+                </div>
+                
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="remember">
+                    <label class="form-check-label" for="remember">Remember me</label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-login">Login</button>
+                
+                <div class="login-links">
+                    <a href="#">Forgot password?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

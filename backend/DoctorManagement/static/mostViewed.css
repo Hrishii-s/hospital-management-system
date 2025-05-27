@@ -1,0 +1,59 @@
+.container{
+    margin-top: 50px;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    max-width: 1200px;
+}
+th {
+    background-color: #f8f9fa !important;
+    color: #2c3e50 !important;
+    }
+.department-badge {
+    background-color: #f0f9ff;
+    border: 1px solid #dee2e6;
+    border-radius: 20px;
+    padding: 2px 20px;
+    font-size: 0.75rem;
+}
+    .rank-badge {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+.rank-1 {
+    background-color: #FFD700;
+    color: #000;
+}
+
+.rank-2 {
+    background-color: #C0C0C0;
+    color: #000;
+}
+
+.rank-3 {
+    background-color: #CD7F32;
+    color: #fff;
+}
+
+.rank-other {
+    background-color: #f0f0f0;
+    color: #555;
+}
+
+@media only screen and (max-width:768px){
+    .container{
+        max-width: 100%;
+        border-radius: 0px;
+        box-shadow: none;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding: 0;
+    }
+}

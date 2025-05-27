@@ -1,0 +1,127 @@
+{% include 'partials/nav.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'viewDoctors.css' %}">
+</head>
+
+<style>
+
+</style>
+<body>
+    <div class="container">
+        <div class="page-header text-center">
+            <h1 class="text-center page-title">View Doctors</h1>
+        </div>
+  
+        <div class="table-container table-responsive">
+        <table class="table table-hover ">
+            <thead>
+                <tr>
+                    <th> Name of Doctor</th>
+                    <th> Department</th>
+                    <th> Experience</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody >
+                {% for doctor in doctors %}
+                <tr>
+                    <td>{{doctor.name}}</td>
+                    <td>{{doctor.department}}</td>
+                    <td>{{doctor.experience}} yrs</td>
+                    <td class="text-center">
+                    <a href="{% url 'doctorProfile' doctor.id %}"><button class="btn btn-outline-success mb-2"><i class="fas fa-eye"></i></button></a>
+                    <a href="{% url 'editDoctor' doctor.id %}"> <button class="btn btn-outline-warning mb-2"><i class="fas fa-pen-to-square" ></i></button></a>
+                    <button type="button" class="btn btn-outline-danger mb-2 open-delete-modal"
+                                    data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                    data-url="{% url 'deleteDoctor' doctor.id %}" data-name="{{ doctor.name }}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <nav aria-label="Doctor pagination">
+            <ul class="pagination pagination-sm justify-content-center flex-wrap gap-1 mt-4">
+            {% if doctors.has_previous %}
+              <li class="page-item "><a href="?page=1" class="page-link rounded-pill px-3 border-success text-success">&laquo; First</a></li>
+              <li class="page-item"><a href="?page={{doctors.previous_page_number}}" class="page-link  rounded-pill px-3 border-success text-success">&laquo;</a></li>
+              {% endif %}
+
+              {% for page_number in doctors.paginator.get_elided_page_range %}
+
+              {% if doctors.number == page_number %}
+              <li class="page-item" aria-current="page">
+                <a class="page-link rounded-circle fw-bold border-success bg-success text-white"
+                style="width: 32px;height:32px;display: flex;justify-content: center;align-items: center;" >{{page_number}}</a>
+            </li>
+              {% else %}
+              <li class="page-item ">
+                <a href="?page={{ page_number }}" class="page-link rounded-circle border-success text-success" 
+                style="width: 32px;height:32px;display: flex;justify-content: center;align-items: center;">{{ page_number }}</a>
+            </li>
+              {% endif %}
+              {% endfor %}
+
+              {% if doctors.has_next %}
+              <li class="page-item"><a class="page-link rounded-pill border-success px-3 text-success" href="?page={{ doctors.next_page_number }}"> &raquo;</a></li>
+              <li class="page-item"><a class="page-link rounded-pill border-success px-3 text-success" href="?page={{ doctors.paginator.num_pages }}">Last &raquo;</a></li>
+              {% endif %}
+            </ul>
+          </nav>
+
+
+
+
+    </div>
+
+
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete Dr. <span id="doctorName"></span>? This action cannot be undone.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <form method="POST" id="deleteForm">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const deleteButtons = document.querySelectorAll('.open-delete-modal');
+        const deleteForm = document.getElementById('deleteForm');
+        const doctorNameSpan = document.getElementById('doctorName');
+
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const doctorId = this.getAttribute('data-url');
+                const doctorName = this.getAttribute('data-name');
+
+                doctorNameSpan.textContent = doctorName;
+
+                deleteForm.setAttribute('action', doctorId);
+            });
+        });
+    });
+    </script>
+</body>
+</html>

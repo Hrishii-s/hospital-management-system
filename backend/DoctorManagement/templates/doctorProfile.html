@@ -1,0 +1,46 @@
+{% include 'partials/nav.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'doctorProfile.css' %}">
+    <style>
+ 
+    </style>
+
+</head>
+<body>
+    <div class="main-container">
+      <div class="main-header">
+        <div class="row  align-items-center">
+          <div class="col-lg-3 col-md-4 mb-4 mb-md-0 text-center">
+            <img src="{{doctor.profile.url}}" class="profile-img"  >
+          </div>
+          <div class="col-lg-9 col-md-8 text-center text-md-start" style="text-transform: capitalize;">
+            <h1 class="profile-name">Dr. {{doctor.name}}</h1>
+            <p class="lead mb-3 ">{{doctor.department}}</p>
+          </div>
+        </div>
+      </div>
+       
+
+<!-- profile desc -->
+<div class="container" >
+<div class="col-md-12">
+  <div class="card mb-3" style="border: 0;">
+    <div class="card-body text-start ">
+      <h2 class="desc-title">Professional Details</h2>
+      <p><strong><i class="fas fa-graduation-cap text-success" ></i> Qualification :</strong> {{doctor.qualification}}</p>
+      <p><strong><i class="fas fa-history text-success" ></i> Experience :</strong> {{doctor.experience}} yrs</p>
+      <p><strong><i class="fas fa-hospital text-success" ></i> Department :</strong> {{doctor.department}}</p>
+      <p><strong><i class="fas fa-phone-alt text-success" ></i>  Contact Number :</strong> {{doctor.doc_num}}</p>
+      
+    </div>
+  </div>
+</div>
+</div>
+
+</div>

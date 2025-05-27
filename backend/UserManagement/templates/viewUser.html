@@ -1,0 +1,72 @@
+{% include 'partials/nav.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'viewUser.css' %}">
+
+</head>
+<body>
+<div class="container">
+    <div class="page-header text-center">
+        <h1 class="text-center page-title">View Users</h1>  
+    </div>
+    <div class="table-container table-responsive">
+        <table class="table table-hover">
+            <thead class="table-header">
+                <tr>
+                  
+                    <th><i class="fa-solid fa-user"></i> User</th>
+                    <th><i class="fa-solid fa-envelope"></i> Email</th>
+                    <th><i class="fa-solid fa-gear"></i> Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for user in user_list%}
+                    <td>{{user.name}}</td>
+                    <td>{{user.email}}</td>
+                    <td><a href="{% url 'userProfile' user.id %}"><button class="btn action-btn btn-view" title="View User"><i class="fa-regular fa-eye"></i></button></a></i></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <nav aria-label="User_list pagination">
+      <ul class="pagination pagination-sm justify-content-center flex-wrap gap-1 mt-4">
+      {% if user_list.has_previous %}
+        <li class="page-item "><a href="?page=1" class="page-link rounded-pill px-3 border-success text-success">&laquo; First</a></li>
+        <li class="page-item"><a href="?page={{user_list.previous_page_number}}" class="page-link  rounded-pill px-3 border-success text-success">&laquo;</a></li>
+        {% endif %}
+
+        {% for page_number in page_range %}
+
+        {% if user_list.number == page_number %}
+        <li class="page-item" aria-current="page">
+          <a class="page-link rounded-circle fw-bold border-success bg-success text-white"
+          style="width: 32px;height:32px;display: flex;justify-content: center;align-items: center;" >{{page_number}}</a>
+      </li>
+        {% else %}
+        <li class="page-item ">
+          <a href="?page={{ page_number }}" class="page-link rounded-circle border-success text-success" 
+          style="width: 32px;height:32px;display: flex;justify-content: center;align-items: center;">{{ page_number }}</a>
+      </li>
+        {% endif %}
+        {% endfor %}
+
+        {% if user_list.has_next %}
+        <li class="page-item"><a class="page-link rounded-pill border-success px-3 text-success" href="?page={{ user_list.next_page_number }}"> &raquo;</a></li>
+        <li class="page-item"><a class="page-link rounded-pill border-success px-3 text-success" href="?page={{ user_list.paginator.num_pages }}">Last &raquo;</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+
+
+
+</div>
+
+</body>
+</html>

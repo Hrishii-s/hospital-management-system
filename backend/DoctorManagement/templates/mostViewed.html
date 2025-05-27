@@ -1,0 +1,74 @@
+{% include 'partials/nav.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Most viewed Doctors</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'mostViewed.css' %}">
+    <style>
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-3">Doctor Ranking By Patient Visits</h1>
+
+    <form method ="GET">
+      <div class="d-flex mx-5  my-3 justify-conent-between align-items-center">
+          <label class="form-label" for="month-filter">Filter by Month : </label>
+            <select class="form-select mx-2 w-25" id="month-filter" name="month" onchange="this.form.submit()">
+              <option value="all"{% if selected_month == "all" %}selected{% endif %}>All Months</option>
+              <option value="jan"{% if selected_month == "jan" %}selected{% endif %}>January</option>
+              <option value="feb"{% if selected_month == 'feb' %}selected{% endif %}>February</option>
+              <option value="mar"{% if selected_month == 'mar' %}selected{% endif %}>March</option>
+              <option value="apr"{% if selected_month == 'apr' %}selected{% endif %}>April</option>
+              <option value="may"{% if selected_month == 'may' %}selected{% endif %}>May</option>
+              <option value="jun"{% if selected_month == 'jun' %}selected{% endif %}>June</option>
+              <option value="jul"{% if selected_month == 'jul' %}selected{% endif %}>July</option>
+              <option value="aug"{% if selected_month == 'aug' %}selected{% endif %}>August</option>
+              <option value="sep"{% if selected_month == 'sep' %}selected{% endif %}>September</option>
+              <option value="oct"{% if selected_month == 'oct' %}selected{% endif %}>October</option>
+              <option value="nov"{% if selected_month == 'nov' %}selected{% endif %}>November</option>
+              <option value="dec"{% if selected_month == 'dec' %}selected{% endif %}>December</option>
+            </select>
+        </div>
+    </form>
+
+      <div class="table-reponsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Doctor Name</th>
+                    <th>Department</th>
+                    <th class="text-center">Patient Visits</th>    
+                </tr>
+            </thead>
+            <tbody>
+                {% for appointment in appointments %}
+                <tr>
+                  <td><div class="rank-badge rank-{{forloop.counter}}">#{{ forloop.counter }}</div></td>
+                  <td>{{ appointment.doctor__name }}</td>
+                  <td class="department"><span class="department-badge">{{ appointment.doctor__department }}</span></td>
+                  <td class="patient-count text-center">{{ appointment.total_visits }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+              
+        </table>
+      </div>
+
+
+
+
+
+
+
+
+
+    </div>
+</body>
+</html>

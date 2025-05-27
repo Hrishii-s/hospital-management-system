@@ -1,0 +1,153 @@
+{% include 'partials/nav.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+        }
+        .appointments{
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        .status-pill {
+            border-radius: 50px;
+            padding: 5px 15px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .page-header {
+            background:  linear-gradient(135deg, #198754, #0f5132);
+            color: white;
+            padding: 2rem 0;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .page-title {
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+        .upcoming{
+            background-color: #e1f5fe;
+            color: #0288d1
+        }
+        .past{
+            background-color: #f5f5f5;
+            color: #757575;
+        
+        }
+    @media only screen and (max-width: 728px) {
+    .container{
+      max-width: 100%;
+      max-height: 100vh;
+      border-radius: 0px;
+      box-shadow: none;
+      margin-top: 0px; 
+      padding: 0;
+  }
+  .page-header {
+    
+    width: 100%;
+    border-radius: 0;
+
+  }
+
+  }
+    </style>
+
+</head>
+<body>
+     <div class="container appointments">
+        <div class="page-header text-center">
+            <h1 class="text-center page-title">View Appointments</h1>
+        </div>
+  
+<div class="table-container table-responsive">
+            
+<form method="GET" >
+    <div class="px-3 ">
+        <div class="col-md-3 mb-3">
+            <select class="form-select" name="filter_by" onchange="this.form.submit()">
+                <option value="">All Appointments</option>
+                <option value="today" {% if filter_by == 'today' %}selected{% endif %}>Today's Appointments</option>
+                <option value="upcoming" {% if filter_by  == 'upcoming' %}selected{% endif %}>Upcoming Appointments</option>
+                <option value="past" {% if filter_by == 'past' %}selected{% endif %}>Past Appointments</option>
+            </select>
+        </div>
+    </form>
+    <table class="table table-hover ">
+        {% if filter_by == 'today' and no_appointments_today %}
+        <p>No appointments today.</p>
+    {% else %}
+    
+        
+        <thead class="table-header">
+            <th><i class="fas fa-user-md"></i> Doctor</th>
+            <th><i class="fas fa-user"></i> Patient</th>
+            <th><i class="fas fa-calendar"></i> Date</th>
+            <th><i class="fas fa-clock"></i> Time</th>
+            <th><i class="fas fa-tag"></i> Status</th>
+
+        </thead>
+        <tbody >
+            {% for appointment in appointments %}
+            <tr>
+                <td>{{appointment.doctor.name}}</td>
+                <td>{{appointment.user.name}}</td>
+                <td>{{appointment.appointment_date|date:"F j, Y"}}</td>
+                <td>{{ appointment.appointment_date|date:"g:i A" }}</td>
+                {% if appointment.appointment_date > time_now %}
+                <td><span class="status-pill upcoming">Upcoming</span></td>
+                {% else %}
+                <td><span class="status-pill past">Completed</span></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+            </tr>
+          {%endif%}
+        </tbody>
+    </table>
+</div>
+
+<nav aria-label="pagination">
+    <ul class="pagination pagination-sm justify-content-center flex-wrap gap-1 mt-4">
+    {% if appointments.has_previous %}
+      <li class="page-item "><a href="?page=1{% if filter_by %}&filter_by={{ filter_by }}{% endif %}" class="page-link rounded-pill px-3 border-success text-success">&laquo; First</a></li>
+      <li class="page-item"><a href="?page={{appointments.previous_page_number}}{% if filter_by %}&filter_by={{ filter_by }}{% endif %}" class="page-link  rounded-pill px-3 border-success text-success">&laquo;</a></li>
+      {% endif %}
+
+      {% for page_number in page_range %}
+
+      {% if appointments.number == page_number %}
+      <li class="page-item" aria-current="page">
+        <a class="page-link rounded-circle fw-bold border-success bg-success text-white"
+        style="width: 32px;height:32px;display: flex;justify-content: center;align-items: center;" >{{page_number}}</a>
+    </li>
+      {% else %}
+      <li class="page-item ">
+        <a href="?page={{ page_number }}{% if filter_by %}&filter_by={{filter_by}}{% endif %}" class="page-link rounded-circle border-success text-success" 
+        style="width: 32px;height:32px;display: flex;justify-content: center;align-items: center;">{{ page_number }}</a>
+    </li>
+      {% endif %}
+      {% endfor %}
+
+      {% if appointments.has_next %}
+      <li class="page-item"><a class="page-link rounded-pill border-success px-3 text-success" href="?page={{ appointments.next_page_number }}{% if filter_by %}&filter_by={{filter_by}}{% endif %}"> &raquo;</a></li>
+      <li class="page-item"><a class="page-link rounded-pill border-success px-3 text-success" href="?page={{ appointments.paginator.num_pages }}{% if filter_by %}&filter_by={{filter_by}}{% endif %}">Last &raquo;</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+</div>
+</div>
+</body>
+</html>

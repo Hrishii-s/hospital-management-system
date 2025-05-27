@@ -1,0 +1,97 @@
+{% include 'partials/nav.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+
+    <div class="container py-5 ">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card shadow">
+                    <div class="card-header text-white" style="background: linear-gradient(90deg, #198754, #157347, #0f5132);">
+                        <h5 class="mb-0">Personal Information</h5>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="text-center mb-3">{{user.name}}</h4>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><i class="fas fa-envelope text-success me-2"></i> <strong>Email : </strong>{{user.email}}</li>
+                            <li class="list-group-item"><i class="fas fa-birthday-cake text-success me-2"></i> <strong>Date Of birth : </strong>{{user.dob}}</li>
+                            <li class="list-group-item"><strong><i class="fas fa-venus-mars text-success me-2"></i> Gender : </strong>{{user.gender}}</li>
+                            <li class="list-group-item"><strong><i class="fas fa-location-dot text-success me-2"></i> Address : </strong><span style="text-align:center;">{{user.address}}</span></li>
+                            <li class="list-group-item"><strong><i class="fas fa-phone text-success me-2"></i> Contact : </strong>{{user.contact_no}}</li>
+                          </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="card shadow">
+                    <div class="card-header text-white" style="background: linear-gradient(90deg, #198754, #157347, #0f5132);">
+                    <h5 class="mb-0">Appointment History</h5>
+                    </div>
+                    
+                    <div class="card-body">
+                        {% if appointments %}
+
+                        {% for appointment in appointments %}
+                        <div class="card mb-3 border-success border-4">
+                            <div class="card-body" >
+                                <h5><i class="fa-solid fa-user-doctor text-success me-2"></i> {{appointment.doctor.name}}</h5>
+                                <p class="mb-2"><i class="fa-solid fa-stethoscope text-success me-2"></i> {{appointment.doctor.department}}</p>
+                                <div class="mb-2"><i class="far fa-calendar text-success me-2"></i> {{ appointment.appointment_date|date:"F j, Y, g:i A" }}</div>
+
+                            </div>
+                        </div>
+                        {% endfor %}
+                                           
+                         
+                        <nav aria-label="Appointment pagination">
+                            <ul class="pagination pagination-sm justify-content-center flex-wrap gap-1 mt-4">
+                            {% if appointments.has_previous %}
+                              <li class="page-item "><a href="?page=1" class="page-link rounded-pill px-3 border-success text-success">&laquo; First</a></li>
+                              <li class="page-item"><a href="?page={{appointments.previous_page_number}}" class="page-link  rounded-pill px-3 border-success text-success">&laquo;</a></li>
+                              {% endif %}
+
+                              {% for page_number in page_range %}
+
+                              {% if appointments.number == page_number %}
+                              <li class="page-item" aria-current="page">
+                                <a class="page-link rounded-circle fw-bold border-success bg-success text-white"
+                                style="width: 32px;height:32px;display: flex;justify-content: center;align-items: center;" >{{page_number}}</a>
+                            </li>
+                              {% else %}
+                              <li class="page-item ">
+                                <a href="?page={{ page_number }}" class="page-link rounded-circle border-success text-success" 
+                                style="width: 32px;height:32px;display: flex;justify-content: center;align-items: center;">{{ page_number }}</a>
+                            </li>
+                              {% endif %}
+                              {% endfor %}
+
+                              {% if appointments.has_next %}
+                              <li class="page-item"><a class="page-link rounded-pill border-success px-3 text-success" href="?page={{ appointments.next_page_number }}"> &raquo;</a></li>
+                              <li class="page-item"><a class="page-link rounded-pill border-success px-3 text-success" href="?page={{ appointments.paginator.num_pages }}">Last &raquo;</a></li>
+                              {% endif %}
+                            </ul>
+                          </nav>
+
+                          {% else %}
+                          <p class="mb-2">No appointment History</p>
+                          {% endif %}
+                       
+
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+</body>
+</html>

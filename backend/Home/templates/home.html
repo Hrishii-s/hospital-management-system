@@ -1,0 +1,164 @@
+
+
+{% include 'partials/nav.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
+  <style>
+
+
+    </style>
+</head>
+<body>
+
+    
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center flex-column-reverse flex-lg-row">
+                <div class="col-lg-6 ">
+                    <h1 class="hero-heading">Administrative Dashboard for Healthcare Excellence</h1>
+                    <h3 class="hero-subheading">Streamline your medical facility management</h3>
+                    <p class="hero-text">
+                        MedixCare Admin provides a comprehensive solution for healthcare administrators to manage appointments, 
+                        track doctor performance, and deliver exceptional patient care through an intuitive and 
+                        powerful management system.
+                    </p>
+                    <div class="d-flex gap-3 mt-4">
+                        
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'adminLogout' %}" class="btn cta-button primary w-25 text-white">
+                            <i class="fa-solid fa-right-from-bracket"></i>Logout
+                        </a>
+                    {% else %}
+                        <a href="{% url 'adminLogin' %}" class="btn cta-button primary text-white">
+                            <i class="fas fa-sign-in-alt me-2"></i>Login to Dashboard
+                        </a>
+                    {% endif %}
+                    
+                        <a href="#features" class="btn cta-button secondary">
+                            <i class="fas fa-info-circle me-2"></i>Learn More
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 ">
+                    <img src="{% static 'doc-hero2.svg' %}" class="img-fluid hero-image " alt="MedixCare Admin Dashboard" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section mt-3 py-5" id="features">
+        <div class="container">
+            <h2 class="section-title">Powerful Admin Features</h2>
+            <div class="row ">
+                <div class="col-md-4 ">
+                    <div class="feature-card">
+                        <i class="fas fa-calendar-alt feature-icon"></i>
+                        <h3 class="feature-title">Appointment Management</h3>
+                        <p>Efficiently manage all appointments with comprehensive scheduling tools. Track, update, and optimize patient visits.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 ">
+                    <div class="feature-card">
+                        <i class="fas fa-user-md feature-icon"></i>
+                        <h3 class="feature-title">Physician Directory</h3>
+                        <p>Maintain detailed profiles for all healthcare providers. Track specialties, availability, and performance metrics.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <i class="fas fa-users feature-icon"></i>
+                        <h3 class="feature-title">User Management</h3>
+                        <p>Control access and permissions for staff and administrators. Ensure data security and operational efficiency.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <div class="stat-number">3,500+</div>
+                    <div class="stat-text">Appointments Managed Monthly</div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-number">250+</div>
+                    <div class="stat-text">Healthcare Professionals</div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-text">System Uptime</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- Call to Action -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="section-title">Ready to Transform Your Healthcare Management?</h2>
+                    <p class="mb-4">Access your administrative dashboard to start managing appointments, doctors, and users with ease.</p>
+                    <a href="{% url 'adminLogin' %}" class="btn cta-button primary text-white">
+                        <i class="fas fa-sign-in-alt me-2"></i>Login to Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5 pb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5><i class="fas fa-heartbeat me-2"></i>MedixCare</h5>
+                    <p class="small">Your trusted healthcare management solution for administrative excellence.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{% url 'home' %}" class="text-white-50">Home</a></li>
+                        <li><a href="{% url 'viewAppointments' %}" class="text-white-50">Appointments</a></li>
+                        <li><a href="{% url 'viewDoctors' %}" class="text-white-50">Doctors</a></li>
+                        <li><a href="{% url 'viewUser' %}" class="text-white-50">Users</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact</h5>
+                    <p class="small text-white-50">
+                        <i class="fas fa-envelope me-2"></i>support@medixcare.com<br>
+                        <i class="fas fa-phone me-2"></i>(123) 456-7890<br>
+                        <i class="fas fa-map-marker-alt me-2"></i>1234 Healthcare Ave, Medical City
+                    </p>
+                </div>
+            </div>
+            <hr class="my-3 bg-secondary">
+            <div class="row ">
+                <div class="col-md-6 ">
+                    <p class="small mb-0">&copy; 2025 MedixCare. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

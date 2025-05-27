@@ -1,0 +1,213 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.hero-section {
+    background: linear-gradient(190deg, #f8f9fa 60%, #d1e7dd 100%);
+    padding: 80px 0;
+    padding-bottom: 150px;
+    border-radius: 0 0 50px 50px;
+    
+}
+#features {
+    scroll-margin-top: 35px; 
+}
+
+.hero-heading {
+    font-size: 3.2rem;
+    color: #0f5132;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.hero-subheading {
+    font-size: 1.5rem;
+    color: #198754;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.hero-text {
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+.hero-image {
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(15, 81, 50, 0.2);
+    transition: all 0.5s ease;
+}
+
+.hero-image:hover {
+    transform: translateY(-20px);
+    box-shadow: 0 20px 40px rgba(25, 135, 84, 0.414);
+}
+
+.cta-button {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 30px;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(15, 81, 50, 0.3);
+}
+
+.cta-button.primary {
+    background: linear-gradient(135deg, #198754, #0f5132);
+    border: none;
+}
+
+.cta-button.primary:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(15, 81, 50, 0.4);
+}
+
+.cta-button.secondary {
+    
+    background-color: white;
+    color: #198754;
+    border: 2px solid #198754;
+}
+
+.cta-button.secondary:hover {
+    background-color: #f8f9fa;
+    box-shadow: 0 10px 20px rgba(15, 81, 50, 0.4);
+    transform: translateY(-5px);
+}
+
+.feature-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    border-top: 4px solid #198754;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    color: #0f5132;
+    margin-bottom: 20px;
+}
+
+.feature-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.stats-section {
+    background-color: #d1e7dd;
+    padding: 50px 0;
+    border-radius: 50px;
+    margin: 50px 0;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #0f5132;
+    margin-bottom: 10px;
+}
+
+.stat-text {
+    font-size: 1rem;
+    color: #555;
+}
+
+.testimonial-section {
+    padding: 50px 0;
+}
+
+.section-title {
+    position: relative;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #0f5132;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.section-title:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #198754, #0f5132);
+    border-radius: 2px;
+}
+
+.testimonial-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.testimonial-card:before {
+    content: '\201C';
+    font-family: Georgia, serif;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 5rem;
+    color: rgba(15, 81, 50, 0.1);
+    line-height: 1;
+}
+
+.testimonial-text {
+    font-style: italic;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.testimonial-author {
+    font-weight: 600;
+    color: #0f5132;
+}
+
+.testimonial-role {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+@media (max-width: 575.98px) {
+.hero-section {
+padding: 80px 0;
+}
+.hero-heading {
+font-size: 2rem;
+}
+
+.hero-subheading {
+font-size: 1.2rem;
+}
+
+.hero-text {
+font-size: 1rem;
+}
+
+.cta-button {
+font-size: 1rem;
+padding: 10px 20px;
+}
+.cta-button {
+    padding: 10px 3px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}}

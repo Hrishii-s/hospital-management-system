@@ -1,0 +1,112 @@
+{% include 'partials/nav.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Doctor</title>
+    
+<style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+        }
+        .form-container {
+            background-color: white;
+            max-width: 700px;
+            padding: 30px;
+            margin: 30px auto;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.2);
+        }
+        .page-header {
+            background: linear-gradient(135deg, #198754, #0f5132);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .form-label {
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        .btn-save {
+            background-color: #198754;
+            border-color: #198754;
+            padding: 8px 20px;
+        }
+        .btn-save:hover {
+            background-color: #0f5132;
+            border-color: #0f5132;
+        }
+        @media (max-width: 768px) {
+            .form-container {
+                border-radius: 0;
+                margin: 0;
+                box-shadow: none;
+            }
+            .page-header {
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="page-header text-center">
+            <h1 class="page-title">Edit Doctor</h1>
+        </div>
+        
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div class="row g-3">
+
+                <div class="col-md-12">
+                    <label for="{{ form.name.id_for_label }}" class="form-label">Full Name</label>
+                    {{ form.name }}
+                </div>
+
+                <div class="col-12">
+                    <label for="{{ form.doc_num.id_for_label }}" class="form-label">Contact Number</label>
+                    {{ form.doc_num }}
+                </div>
+
+                <div class="col-md-6">
+                    <label for="{{ form.qualification.id_for_label }}" class="form-label">Qualification</label>
+                    {{ form.qualification }}
+                </div>
+ 
+                <div class="col-md-6">
+                    <label for="{{ form.department.id_for_label }}" class="form-label">Department</label>
+                    {{ form.department }}
+                </div>
+
+                <div class="col-md-6">
+                    <label for="{{ form.experience.id_for_label }}" class="form-label">Experience</label>
+                    {{ form.experience }}
+                </div>
+
+                <div class="col-md-6">
+                    <label for="{{ form.profile.id_for_label }}" class="form-label">Profile Picture</label>
+                    {{ form.profile }}
+                    {% if form.instance.profile %}
+                        <div class="mt-2 text-center">
+                            <small>Current: <a href="{{ form.instance.profile.url }}" target="_blank">View Image</a></small>
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <div class="col-12 mt-4">
+                    <button type="submit" class="btn btn-save btn-primary">Save Changes</button>
+                    <a href="{% url 'viewDoctors' %}" class="btn btn-outline-danger ms-2">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+</body>
+</html>
