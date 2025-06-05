@@ -47,9 +47,9 @@ This system is designed to provide a smooth and secure appointment booking exper
 | Frontend   | React.js           |
 | Backend    | Django (Python)    |
 | Database   | MySQL (via XAMPP)  |
-| Interface  | HTML, CSS          |
-| Tools      | phpMyAdmin         |
-| APIs       | REST APIs (Django) |
+| Interface  | HTML, CSS, Bootstrap 5|
+| Tools      | phpMyAdmin, Postman         |
+| APIs       | REST APIs (Django Rest Framework) |
 
 ---
 
