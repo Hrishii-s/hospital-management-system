@@ -68,5 +68,20 @@ This system is designed to provide a smooth and secure appointment booking exper
 - Advanced analytics or dashboards  
 
 ---
+## Project Structure
 
-## 🧱 Project Structure
+```plaintext
+hospital-management-system/
+├── backend/                # Django backend
+│   ├── manage.py
+│   ├── settings.py
+│   ├── urls.py
+│   ├── wsgi.py
+│   ├── app1/               # your Django apps
+│   └── ...
+├── frontend/               # React frontend
+│   ├── src/                # React source code
+│   ├── public/             # Public static files
+│   ├── package.json
+│   └── ...
+├── README.md               # Project documentation
