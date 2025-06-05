@@ -1,4 +1,4 @@
-# Hospital Management & Appointment Booking System
+# 🏥 Hospital Management & Appointment Booking System
 
 A full-stack web application to simplify hospital appointment booking and administrative tasks. Patients can register, search doctors, and book appointments. Admins can manage users, doctors, and view filtered reports on appointments.
 
