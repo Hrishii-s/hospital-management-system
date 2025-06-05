@@ -77,7 +77,7 @@ hospital-management-system/
 │   ├── settings.py
 │   ├── urls.py
 │   ├── wsgi.py
-│   ├── app1/               # your Django apps
+│   ├── app1/               # Django apps
 │   └── ...
 ├── frontend/               # React frontend
 │   ├── src/                # React source code
