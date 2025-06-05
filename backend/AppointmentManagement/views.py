@@ -77,7 +77,7 @@ def appointment_booking(request):
         serializer.save()
         return Response(serializer.data)
     else:
-        return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=HTTP_404_NOT_FOUND)
 
 
 @api_view(['GET'])
