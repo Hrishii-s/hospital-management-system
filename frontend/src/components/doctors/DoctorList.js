@@ -17,13 +17,13 @@ function DoctorList() {
   const searchQuery=params.get('search')?.toLowerCase() || ''
 
   let user=useSelector(store=>store.auth.user)
-  const dispatch=useDispatch()
+ 
   
   function fetchDoctor(){
     axios.get("http://127.0.0.1:8000/Doctor_Management/doctor_list/",{
       'headers':{"Authorization":"Token " + user.token}
     }).then(response=>{
-      console.log(window.localStorage)
+      // console.log(window.localStorage)
       setDoctorList(response.data)
     })
 }
