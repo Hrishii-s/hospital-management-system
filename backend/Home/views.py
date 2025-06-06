@@ -19,7 +19,7 @@ def admin_login(request):
 
 
 def admin_logout(request):
-    logout(request)  # Clears the session
+    logout(request) 
     return redirect('home') 
 
 
