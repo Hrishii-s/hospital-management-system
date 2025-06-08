@@ -12,10 +12,6 @@ function DoctorProfile() {
   const [error, setError] = useState(null);
   const [time,setTime] = useState ("")
 
-
-
-
-
   let user=useSelector(store=>store.auth.user)
   const navigate=useNavigate()
 

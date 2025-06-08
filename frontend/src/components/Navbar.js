@@ -6,16 +6,12 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { removeUser, setUser } from "./store/authSlice";
 
-
-
-
 function Navbar() {
   const [isNavCollapsed, setIsNavCollapsed] = useState(true);
   const [searchTerm,setSearchTerm] = useState("")
   var user=useSelector(store=>store.auth.user)
   const dispatch=useDispatch()
   const navigate = useNavigate()
-
 
   function handleLogout(){
     if (user){

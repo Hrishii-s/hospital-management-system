@@ -8,6 +8,7 @@ import Footer from './components/Footer.js';
 
 function App() {
   const handleAnimationComplete = () => {
+    
   console.log('All letters have animated!');
 };
   return (

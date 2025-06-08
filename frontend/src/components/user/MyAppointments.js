@@ -123,15 +123,9 @@ function MyAppointments() {
                       </div>
                     </div>
                   </div>
-                  
-          
-
-                  ))}
-                  
-                </div>
-              
+                  ))}  
+                </div> 
             ):(
-            
             activeTab === 'past' && (
                 <div className="row g-4">
                   {/* Past Card 1 */}
@@ -156,10 +150,7 @@ function MyAppointments() {
                             <p className="text-muted">{appnts.doctor_details.department}</p>
                           </div>
                         </div>
-                        
                         <div className="appointment-details pt-3 border-top">
-                          
-                        
                         </div>
                       </div>
                     </div>
@@ -168,8 +159,6 @@ function MyAppointments() {
                 </div>
             ))
             }
-
-
             {/* card body closing */}
           </div>
         </div>
