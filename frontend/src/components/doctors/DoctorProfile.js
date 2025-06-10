@@ -63,18 +63,6 @@ function DoctorProfile() {
     });
   }
 
-
-
-
-
-
-
-
-
-
-
-  
-
   return (
     <div>
       <Navbar />
@@ -84,8 +72,6 @@ function DoctorProfile() {
           <div className="col-lg-4 mb-4">
             <div className="card doctor-profile-card h-100 ">
               <div className="card-body text-center">
-             
-
                 <img 
                   src={doctor?doctor.profile:""}
                   alt={doctor?doctor.name:""} 
